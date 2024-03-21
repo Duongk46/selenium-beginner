@@ -20,7 +20,6 @@ suite(function (env) {
 
             const actions = driver.actions({ async: true });
             await actions.press(Button.BACK).release(Button.BACK).perform()
-
             assert.deepStrictEqual(await driver.getTitle(), `BasicMouseInterfaceTest`)
         });
 

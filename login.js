@@ -1,12 +1,23 @@
-function validateLogin() {
-    let username = document.getElementById('floatingInput').value;
-    let password = document.getElementById('floatingPassword').value;
-    
-    if (username == 'admin@gmail.com' && password == '123') {
-        alert('Login successful!');
-    // Redirect to another page or perform other actions upon successful login
-    } else {
-        alert('Login failed. Please check your username and password.');
-        return false;
+
+document.querySelector('.form-submit').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const loginApi = await fetch("https://localhost:7096/api/Auth/Login", {
+        method: 'post',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            userName: document.getElementById('floatingInput').value,
+            password: document.getElementById('floatingPassword').value
+        })
+    });
+    const res = await loginApi.json();
+    if (res.status == 200) {
+
     }
-}
+    else {
+        alert('Tài khoản không tồn tại!');
+    }
+});
+
