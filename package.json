@@ -7,6 +7,6 @@
     "mocha": "^10.2.0"
   },
   "scripts": {
-    "test": "npx mocha test/**/*.spec.js --timeout 60000"
+    "test": "npx mocha bt/**/*.spec.js --timeout 10000"
   }
 }
