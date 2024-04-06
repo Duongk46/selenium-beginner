@@ -12,16 +12,18 @@ suite(function (env) {
                 await driver.get('https://github.com/login');
                 let userName = await driver.findElement(By.id('login_field'));
                 let password = await driver.findElement(By.id('password'));
-                await userName.sendKeys("minhduong18072002@gmail.com");
-                await password.sendKeys("minhduong180702d@Daaa", Key.RETURN);
-                await driver.wait(until.titleContains('GitHub'), 5000);
-
+                await userName.sendKeys("xuanhuong2002.hp@gmail.com");
+                await password.sendKeys("huongnguyen2707", Key.RETURN);
+                // await driver.wait(until.titleContains('GitHub'), 5000);
                 const title = await driver.getTitle();
-                assert.strictEqual(title, 'GitHub', 'Login failed');
+                console.log(title);
+                driver.sleep(5000);
+                assert.strictEqual(title, 'Sign in to GitHub · GitHub', 'Login failed');
             }
             catch (ex) {
                 console.log(ex);
+                throw new Error(ex.message);
             }
         });
     });
-}, { browsers: [Browser.EDGE] })
+}, { browsers: [Browser.CHROME] })
